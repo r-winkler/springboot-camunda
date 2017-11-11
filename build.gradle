@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.8.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'ch.renewinkler'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+springBoot {
+	layout = "ZIP"
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile group: 'org.camunda.bpm.extension.springboot', name: 'camunda-bpm-spring-boot-starter-webapp', version: '2.2.0'
+	runtime('com.h2database:h2')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
